@@ -26,7 +26,7 @@ async function getAllSymbols() {
         for (const leftPairPart of Object.keys(pairs)) {
             const symbols = pairs[leftPairPart].map(rightPairPart => {
                 const symbol = generateSymbol(exchange.value, leftPairPart, rightPairPart);
-                console.log(symbol);
+                // console.log(symbol);
                 return {
                     symbol: symbol.short,
                     ticker: symbol.full,
@@ -103,8 +103,9 @@ export default {
 
     getBars: async (symbolInfo, resolution, periodParams, onHistoryCallback, onErrorCallback) => {
         const { from, to, firstDataRequest } = periodParams;
-        console.log('[getBars]: Method call', symbolInfo, resolution, from, to);
+        // console.log('[getBars]: Method call', symbolInfo, resolution, from, to);
         const parsedSymbol = parseFullSymbol(symbolInfo.ticker);
+        console.log(parsedSymbol);
         const urlParameters = {
             e: parsedSymbol.exchange,
             fsym: parsedSymbol.fromSymbol,
@@ -135,7 +136,7 @@ export default {
                     }];
                 }
             });
-            console.log(`[getBars]: returned ${bars.length} bar(s)`);
+            // console.log(`[getBars]: returned ${bars.length} bar(s)`);
             onHistoryCallback(bars, { noData: false });
         } catch (error) {
             console.log('[getBars]: Get error', error);

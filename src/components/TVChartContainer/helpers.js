@@ -5,6 +5,8 @@ export async function makeApiRequest(path) {
     try {
         const response = await fetch(`https://min-api.cryptocompare.com/${path}`, {
 
+    
+
             headers: {
                 Authorization: `Apikey ${API_KEY}`
             }
@@ -20,6 +22,8 @@ export async function makeApiRequest(path) {
 // Generates a symbol ID from a pair of the coins
 export function generateSymbol(exchange, fromSymbol, toSymbol) {
     const short = `${fromSymbol}/${toSymbol}`;
+
+    // console.log(`${exchange}:${short}`)
     return {
         short,
         full: `${exchange}:${short}`,
