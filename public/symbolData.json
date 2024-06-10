@@ -1,0 +1,712 @@
+{
+    "Response": "Success",
+    "Message": "",
+    "HasWarning": false,
+    "Type": 100,
+    "RateLimit": {},
+    "Data": {
+        "Bitfinex": {
+            "pairs": {
+                "TRX": [
+                    "EUR",
+                    "ETH",
+                    "USDT",
+                    "USD",
+                    "BTC"
+                ],
+                "DYM": [
+                    "USDT",
+                    "USD"
+                ],
+                "LRC": [
+                    "USD"
+                ],
+                "SMR": [
+                    "USD",
+                    "USDT"
+                ],
+                "SUI": [
+                    "USDT",
+                    "USD"
+                ],
+                "SNX": [
+                    "USD",
+                    "USDT"
+                ],
+                "HT": [
+                    "USDT",
+                    "USD"
+                ],
+                "LTC": [
+                    "USD",
+                    "USDT",
+                    "BTC"
+                ],
+                "TUSD": [
+                    "USD",
+                    "USDT"
+                ],
+                "FIL": [
+                    "USD",
+                    "USDT"
+                ],
+                "YFI": [
+                    "USD",
+                    "USDT"
+                ],
+                "XMR": [
+                    "BTC",
+                    "USD",
+                    "USDT"
+                ],
+                "APP": [
+                    "USD",
+                    "USDT"
+                ],
+                "WIF": [
+                    "USDT",
+                    "USD"
+                ],
+                "JASMY": [
+                    "USDT",
+                    "USD"
+                ],
+                "LDO": [
+                    "USDT",
+                    "USD"
+                ],
+                "XLM": [
+                    "BTC",
+                    "USD",
+                    "USDT"
+                ],
+                "BONK": [
+                    "USDT",
+                    "USD"
+                ],
+                "MATIC": [
+                    "USDT",
+                    "USD",
+                    "BTC"
+                ],
+                "BXN": [
+                    "USDT",
+                    "USD"
+                ],
+                "LEO": [
+                    "BTC",
+                    "USDT",
+                    "USD",
+                    "ETH"
+                ],
+                "INJ": [
+                    "USDT",
+                    "USD"
+                ],
+                "BGB": [
+                    "USDT",
+                    "USD"
+                ],
+                "BORG": [
+                    "USD",
+                    "BTC",
+                    "USDT"
+                ],
+                "TIA": [
+                    "USDT",
+                    "USD"
+                ],
+                "NEO": [
+                    "BTC",
+                    "USDT",
+                    "USD"
+                ],
+                "BOSON": [
+                    "USDT",
+                    "USD"
+                ],
+                "NOT": [
+                    "USD",
+                    "USDT"
+                ],
+                "CHZ": [
+                    "USDT",
+                    "USD"
+                ],
+                "OMG": [
+                    "USD",
+                    "ETH",
+                    "BTC"
+                ],
+                "XRP": [
+                    "USDT",
+                    "BTC",
+                    "USD"
+                ],
+                "SUKU": [
+                    "USDT",
+                    "USD"
+                ],
+                "WBTC": [
+                    "BTC",
+                    "USD"
+                ],
+                "KSM": [
+                    "USDT",
+                    "USD"
+                ],
+                "GMTT": [
+                    "USDT",
+                    "USD"
+                ],
+                "DOT": [
+                    "USD",
+                    "USDT",
+                    "BTC"
+                ],
+                "ALGO": [
+                    "USD",
+                    "BTC",
+                    "USDT"
+                ],
+                "BTC": [
+                    "USDT",
+                    "USD",
+                    "EURT",
+                    "EUR",
+                    "GBP",
+                    "TRY",
+                    "JPY"
+                ],
+                "NFT": [
+                    "USDT",
+                    "USD"
+                ],
+                "VRA": [
+                    "USDT",
+                    "USD"
+                ],
+                "EVEREST": [
+                    "USD"
+                ],
+                "SWEAT": [
+                    "USD",
+                    "USDT"
+                ],
+                "XDC": [
+                    "USD",
+                    "USDT"
+                ],
+                "GOC": [
+                    "USDT",
+                    "USD"
+                ],
+                "BAL": [
+                    "USDT",
+                    "USD"
+                ],
+                "OP": [
+                    "USD",
+                    "USDT"
+                ],
+                "FLR": [
+                    "USDT",
+                    "USD"
+                ],
+                "TLOS": [
+                    "USD"
+                ],
+                "ENA": [
+                    "USD",
+                    "USDT"
+                ],
+                "OGN": [
+                    "USD",
+                    "USDT"
+                ],
+                "ETH": [
+                    "BTC",
+                    "EURT",
+                    "USDT",
+                    "JPY",
+                    "EUR",
+                    "USD",
+                    "GBP"
+                ],
+                "APT": [
+                    "USD",
+                    "USDT"
+                ],
+                "EOS": [
+                    "USDT",
+                    "USD",
+                    "BTC",
+                    "ETH"
+                ],
+                "W": [
+                    "USDT",
+                    "USD"
+                ],
+                "XCAD": [
+                    "USD"
+                ],
+                "REQ": [
+                    "USD"
+                ],
+                "USDT": [
+                    "TRY",
+                    "JPY",
+                    "EUR",
+                    "GBP",
+                    "USD"
+                ],
+                "WBT": [
+                    "USD",
+                    "USDT"
+                ],
+                "MKR": [
+                    "USDT",
+                    "USD"
+                ],
+                "BCH": [
+                    "USD"
+                ],
+                "LIF3": [
+                    "USD",
+                    "USDT"
+                ],
+                "KARATE": [
+                    "USDT",
+                    "USD"
+                ],
+                "FLOKI": [
+                    "USD",
+                    "USDT"
+                ],
+                "SUSHI": [
+                    "USDT",
+                    "USD"
+                ],
+                "XTP": [
+                    "USDT",
+                    "USD"
+                ],
+                "LINK": [
+                    "USDT",
+                    "USD"
+                ],
+                "BOBA": [
+                    "USD"
+                ],
+                "MODE": [
+                    "USDT",
+                    "USD"
+                ],
+                "SEI": [
+                    "USDT",
+                    "USD"
+                ],
+                "PEPE": [
+                    "USD",
+                    "USDT"
+                ],
+                "ZETA": [
+                    "USDT",
+                    "USD"
+                ],
+                "ARB": [
+                    "USD",
+                    "USDT"
+                ],
+                "ETC": [
+                    "USD",
+                    "BTC",
+                    "USDT"
+                ],
+                "STRK": [
+                    "USD",
+                    "USDT"
+                ],
+                "KAVA": [
+                    "USD",
+                    "USDT"
+                ],
+                "ETHW": [
+                    "USD",
+                    "USDT"
+                ],
+                "WMINIMA": [
+                    "USD",
+                    "USDT"
+                ],
+                "RRT": [
+                    "USD"
+                ],
+                "JUP": [
+                    "USD",
+                    "USDT"
+                ],
+                "XVG": [
+                    "USD"
+                ],
+                "JST": [
+                    "BTC",
+                    "USDT",
+                    "USD"
+                ],
+                "USDC": [
+                    "USD",
+                    "USDT"
+                ],
+                "CELO": [
+                    "USD",
+                    "USDT"
+                ],
+                "WAVES": [
+                    "USD",
+                    "USDT"
+                ],
+                "OPEN": [
+                    "USD",
+                    "USDT"
+                ],
+                "XAUT": [
+                    "ETH",
+                    "USDT",
+                    "USD",
+                    "BTC"
+                ],
+                "XRD": [
+                    "USD",
+                    "BTC"
+                ],
+                "GT": [
+                    "USDT",
+                    "USD"
+                ],
+                "THETA": [
+                    "USDT",
+                    "USD"
+                ],
+                "ADA": [
+                    "USD",
+                    "USDT",
+                    "BTC"
+                ],
+                "ATOM": [
+                    "USDT",
+                    "BTC",
+                    "USD"
+                ],
+                "GALA": [
+                    "USD",
+                    "USDT"
+                ],
+                "KNC": [
+                    "USD"
+                ],
+                "CCD": [
+                    "USDT",
+                    "USD"
+                ],
+                "TOMI": [
+                    "USD",
+                    "USDT"
+                ],
+                "HMT": [
+                    "USDT",
+                    "USD"
+                ],
+                "MANA": [
+                    "BTC",
+                    "USD"
+                ],
+                "CNHT": [
+                    "BTC",
+                    "USDT"
+                ],
+                "AAVE": [
+                    "USDT",
+                    "USD"
+                ],
+                "AMPL": [
+                    "BTC",
+                    "USDT",
+                    "USD"
+                ],
+                "QTF": [
+                    "USD",
+                    "BTC"
+                ],
+                "WNCG": [
+                    "USD"
+                ],
+                "PNK": [
+                    "USD"
+                ],
+                "WOO": [
+                    "USDT",
+                    "USD"
+                ],
+                "BTT": [
+                    "USD"
+                ],
+                "STG": [
+                    "USDT",
+                    "USD"
+                ],
+                "XTZ": [
+                    "USDT",
+                    "USD",
+                    "BTC"
+                ],
+                "BLUR": [
+                    "USDT",
+                    "USD"
+                ],
+                "TONCOIN": [
+                    "USDT",
+                    "USD"
+                ],
+                "SAND": [
+                    "USD",
+                    "USDT"
+                ],
+                "GRT": [
+                    "USD",
+                    "USDT"
+                ],
+                "BAT": [
+                    "USD"
+                ],
+                "SGB": [
+                    "USDT",
+                    "USD"
+                ],
+                "APE": [
+                    "USD",
+                    "USDT"
+                ],
+                "HI": [
+                    "USD",
+                    "USDT"
+                ],
+                "NXRA": [
+                    "USD"
+                ],
+                "DOGE": [
+                    "BTC",
+                    "USD",
+                    "USDT"
+                ],
+                "MIM": [
+                    "USD",
+                    "USDT",
+                    "BTC"
+                ],
+                "PLU": [
+                    "USD"
+                ],
+                "MIOTA": [
+                    "USD",
+                    "BTC"
+                ],
+                "SPECT": [
+                    "USD",
+                    "USDT"
+                ],
+                "ZRX": [
+                    "USD"
+                ],
+                "SOL": [
+                    "BTC",
+                    "USDT",
+                    "USD"
+                ],
+                "AVAX": [
+                    "USD",
+                    "USDT",
+                    "BTC"
+                ],
+                "BAND": [
+                    "USD",
+                    "USDT"
+                ],
+                "LUNA": [
+                    "USDT",
+                    "USD"
+                ],
+                "VET": [
+                    "USD",
+                    "USDT",
+                    "BTC"
+                ],
+                "ULTRA": [
+                    "BTC",
+                    "USD"
+                ],
+                "BEST": [
+                    "USD"
+                ],
+                "AZERO": [
+                    "USDT",
+                    "USD"
+                ],
+                "MEME": [
+                    "USDT",
+                    "USD"
+                ],
+                "OMNI": [
+                    "USD"
+                ],
+                "SENATE": [
+                    "USD"
+                ],
+                "FUN": [
+                    "USD"
+                ],
+                "SHIB": [
+                    "USDT",
+                    "USD"
+                ],
+                "COMP": [
+                    "USD",
+                    "USDT"
+                ],
+                "EGLD": [
+                    "USD",
+                    "USDT"
+                ],
+                "FCL": [
+                    "USDT",
+                    "USD"
+                ],
+                "B2M": [
+                    "USD",
+                    "USDT"
+                ],
+                "DUSK": [
+                    "USD"
+                ],
+                "WILD": [
+                    "USD",
+                    "USDT"
+                ],
+                "FTM": [
+                    "USD",
+                    "USDT"
+                ],
+                "CRV": [
+                    "USD",
+                    "USDT"
+                ],
+                "FORTH": [
+                    "USD",
+                    "USDT"
+                ],
+                "KAN": [
+                    "USDT",
+                    "USD"
+                ],
+                "ICP": [
+                    "USDT",
+                    "USD"
+                ],
+                "ZIL": [
+                    "USD"
+                ],
+                "SIDUS": [
+                    "USD"
+                ],
+                "MLN": [
+                    "USD"
+                ],
+                "UNI": [
+                    "USD",
+                    "USDT"
+                ],
+                "USDP": [
+                    "USDT",
+                    "USD"
+                ],
+                "OCEAN": [
+                    "USDT",
+                    "USD"
+                ],
+                "DASH": [
+                    "BTC",
+                    "USD"
+                ],
+                "GNO": [
+                    "USD"
+                ],
+                "QTUM": [
+                    "USD"
+                ],
+                "NEXO": [
+                    "USD",
+                    "USDT",
+                    "BTC"
+                ],
+                "TRADE": [
+                    "USDT",
+                    "USD"
+                ],
+                "RLY": [
+                    "USD",
+                    "USDT"
+                ],
+                "1INCH": [
+                    "USDT",
+                    "USD"
+                ],
+                "DORA": [
+                    "USD"
+                ],
+                "NEAR": [
+                    "USDT",
+                    "USD"
+                ],
+                "EURT": [
+                    "USD",
+                    "USDT",
+                    "EUR",
+                    "GBP"
+                ],
+                "DVF": [
+                    "USD"
+                ],
+                "SUN": [
+                    "USDT",
+                    "USD"
+                ],
+                "SPELL": [
+                    "USD"
+                ],
+                "DAI": [
+                    "USD"
+                ],
+                "LYM": [
+                    "USD"
+                ],
+                "AXS": [
+                    "USDT",
+                    "USD"
+                ],
+                "FET": [
+                    "USD",
+                    "USDT"
+                ],
+                "ZEC": [
+                    "BTC",
+                    "USD"
+                ],
+                "CHEX": [
+                    "USD"
+                ]
+            },
+            "isActive": true,
+            "isTopTier": true
+        }
+    }
+}
