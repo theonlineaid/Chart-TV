@@ -1,0 +1,344 @@
+{
+   "DSE": {
+      "pairs": {
+         "ACME": [
+            "BDT"
+         ],
+         "BEXIMCO": [
+            "BDT"
+         ],
+         "GP": [
+            "BDT"
+         ],
+         "SQURPHARMA": [
+            "BDT"
+         ],
+         "ROBI": [
+            "BDT"
+         ],
+         "RENATA": [
+            "BDT"
+         ],
+         "GOLDENSON": [
+            "BDT"
+         ],
+         "HEIDELBCEM": [
+            "BDT"
+         ],
+         "BANKASIA": [
+            "BDT"
+         ],
+         "DBH": [
+            "BDT"
+         ],
+         "LAFSURCEML": [
+            "BDT"
+         ],
+         "MONNOCERA": [
+            "BDT"
+         ],
+         "RECKITTBEN": [
+            "BDT"
+         ],
+         "PHARMAID": [
+            "BDT"
+         ],
+         "PENINSULA": [
+            "BDT"
+         ],
+         "PRIMEINSUR": [
+            "BDT"
+         ],
+         "DELTA": [
+            "BDT"
+         ],
+         "GPHISPAT": [
+            "BDT"
+         ],
+         "LIFEINSUR": [
+            "BDT"
+         ],
+         "PADMAOIL": [
+            "BDT"
+         ],
+         "ABB1STMF": [
+            "BDT"
+         ],
+         "FUWANGCER": [
+            "BDT"
+         ],
+         "NORTHERN": [
+            "BDT"
+         ],
+         "ORIONINFU": [
+            "BDT"
+         ],
+         "CITYBANK": [
+            "BDT"
+         ],
+         "DACCADYE": [
+            "BDT"
+         ],
+         "BDLAMPS": [
+            "BDT"
+         ],
+         "NBL": [
+            "BDT"
+         ],
+         "CENTRALINS": [
+            "BDT"
+         ],
+         "GREENDELMF": [
+            "BDT"
+         ],
+         "IFIC1STMF": [
+            "BDT"
+         ],
+         "HRTEX": [
+            "BDT"
+         ],
+         "KAY&QUE": [
+            "BDT"
+         ],
+         "FEDERALINS": [
+            "BDT"
+         ],
+         "ORIONPHARM": [
+            "BDT"
+         ],
+         "RUPALIBANK": [
+            "BDT"
+         ],
+         "SHASHADNL": [
+            "BDT"
+         ],
+         "BRACBANK": [
+            "BDT"
+         ],
+         "DESHEALBNK": [
+            "BDT"
+         ],
+         "EXIM1STMF": [
+            "BDT"
+         ],
+         "SINOBANGLA": [
+            "BDT"
+         ],
+         "TRUSTB1MF": [
+            "BDT"
+         ],
+         "POPULAR1MF": [
+            "BDT"
+         ],
+         "AAMRANET": [
+            "BDT"
+         ],
+         "MONAFA": [
+            "BDT"
+         ],
+         "GRAMEEN1": [
+            "BDT"
+         ],
+         "RAHIMTEXT": [
+            "BDT"
+         ],
+         "LEGACYFOOT": [
+            "BDT"
+         ],
+         "MBL1STMF": [
+            "BDT"
+         ],
+         "CAPMBDBLMF": [
+            "BDT"
+         ],
+         "BDTHAI": [
+            "BDT"
+         ],
+         "NITOLINS": [
+            "BDT"
+         ],
+         "UCB": [
+            "BDT"
+         ],
+         "ETL": [
+            "BDT"
+         ],
+         "ARAMITCEM": [
+            "BDT"
+         ],
+         "SALAMCRST": [
+            "BDT"
+         ],
+         "SINGERBD": [
+            "BDT"
+         ],
+         "GQBALLPEN": [
+            "BDT"
+         ],
+         "SPCL": [
+            "BDT"
+         ],
+         "NATLIFEINS": [
+            "BDT"
+         ],
+         "SHAHJABANK": [
+            "BDT"
+         ],
+         "SEAPEARL": [
+            "BDT"
+         ],
+         "PARAMOUNT": [
+            "BDT"
+         ],
+         "PEOPLESINS": [
+            "BDT"
+         ],
+         "JUTESPINN": [
+            "BDT"
+         ],
+         "NEWLINE": [
+            "BDT"
+         ],
+         "KTL": [
+            "BDT"
+         ],
+         "NORTHRNINS": [
+            "BDT"
+         ],
+         "WATACHEM": [
+            "BDT"
+         ],
+         "SAMORITA": [
+            "BDT"
+         ],
+         "BRACSCBOND": [
+            "BDT"
+         ],
+         "LANKABAFIN": [
+            "BDT"
+         ],
+         "AL-HAJTEX": [
+            "BDT"
+         ],
+         "EASTERNINS": [
+            "BDT"
+         ],
+         "STANCERAM": [
+            "BDT"
+         ],
+         "SQUARETEXT": [
+            "BDT"
+         ],
+         "MAKSONSPIN": [
+            "BDT"
+         ],
+         "ALIF": [
+            "BDT"
+         ],
+         "RNSPIN": [
+            "BDT"
+         ],
+         "UNITEDINS": [
+            "BDT"
+         ],
+         "APEXFOOT": [
+            "BDT"
+         ],
+         "SONARBAINS": [
+            "BDT"
+         ],
+         "MONNOFABR": [
+            "BDT"
+         ],
+         "TITASGAS": [
+            "BDT"
+         ],
+         "PREMIERCEM": [
+            "BDT"
+         ],
+         "ACI": [
+            "BDT"
+         ],
+         "EBL1STMF": [
+            "BDT"
+         ],
+         "LIBRAINFU": [
+            "BDT"
+         ],
+         "RELIANCINS": [
+            "BDT"
+         ],
+         "ACIFORMULA": [
+            "BDT"
+         ],
+         "FEDERALINS": [
+            "BDT"
+         ],
+         "POPULAR1MF": [
+            "BDT"
+         ]
+      },
+      "isActive": true,
+      "isTopTier": true
+   },
+   "histoday": {
+      "Response": "Success",
+      "Type": 100,
+      "Aggregated": false,
+      "TimeTo": 1718064000,
+      "TimeFrom": 1715472000,
+      "FirstValueInArray": true,
+      "ConversionType": {
+         "type": "force_direct",
+         "conversionSymbol": ""
+      },
+      "Data": [
+         {
+            "time": 1715472000,
+            "close": 1000,
+            "high": 1100,
+            "low": 900,
+            "open": 950,
+            "volumefrom": 1000,
+            "volumeto": 1000000,
+            "conversionType": "force_direct",
+            "conversionSymbol": ""
+         },
+         {
+            "time": 1715558400,
+            "close": 1050,
+            "high": 1150,
+            "low": 950,
+            "open": 1000,
+            "volumefrom": 1200,
+            "volumeto": 1200000,
+            "conversionType": "force_direct",
+            "conversionSymbol": ""
+         },
+         {
+            "time": 1716048000,
+            "close": 1100,
+            "high": 1200,
+            "low": 1000,
+            "open": 1050,
+            "volumefrom": 1500,
+            "volumeto": 1500000,
+            "conversionType": "force_direct",
+            "conversionSymbol": ""
+         },
+         {
+            "time": 1716134400,
+            "close": 1150,
+            "high": 1250,
+            "low": 1050,
+            "open": 1100,
+            "volumefrom": 1800,
+            "volumeto": 1800000,
+            "conversionType": "force_direct",
+            "conversionSymbol": ""
+         }
+      ],
+      "RateLimit": {},
+      "HasWarning": false
+   }
+}
