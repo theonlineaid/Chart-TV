@@ -28,12 +28,14 @@ const Datafeed = {
     async getAllSymbols() {
         const data = await makeApiRequest('all');
 
-        console.log(data)
+        // console.log(data)
 
         let allSymbols = [];
 
         for (const exchange of this.configurationData.exchanges) {
             const pairs = data.Data[exchange.value].pairs;
+
+            // console.log(pairs)
 
             for (const leftPairPart of Object.keys(pairs)) {
                 const symbols = pairs[leftPairPart].map(rightPairPart => {
@@ -49,6 +51,9 @@ const Datafeed = {
                 allSymbols = [...allSymbols, ...symbols];
             }
         }
+
+        console.log(allSymbols)
+
         return allSymbols;
     },
 
@@ -74,6 +79,8 @@ const Datafeed = {
             const symbols = await this.getAllSymbols();
             const symbolItem = symbols.find(({ ticker }) => ticker === symbolName);
 
+            console.log({symbolItem})
+
             if (!symbolItem) {
                 console.error('[resolveSymbol]: Cannot resolve symbol', symbolName);
                 onResolveErrorCallback('Cannot resolve symbol');
@@ -97,6 +104,8 @@ const Datafeed = {
                 volume_precision: 2,
                 data_status: 'streaming',
             };
+
+            console.log(symbolInfo)
             onSymbolResolvedCallback(symbolInfo);
         } catch (error) {
             console.error('[resolveSymbol]: Error', error);
