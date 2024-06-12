@@ -1,6 +1,6 @@
 async function makeApiRequest(path) {
     try {
-        const response = await fetch(`http://localhost8000/${path}`);
+        const response = await fetch(`http://localhost:8000/${path}`);
         if (!response.ok) {
             throw new Error(`Request failed with status ${response.status}`);
         }
@@ -26,45 +26,27 @@ const Datafeed = {
     },
 
     async getAllSymbols() {
-        try {
-            const data = await makeApiRequest('DSE');
-            let allSymbols = [];
+        const data = await makeApiRequest('all');
+        let allSymbols = [];
 
-            if (!data.pairs) {
-                console.error('DSE data is undefined');
-                throw new Error('DSE data is undefined');
+        for (const exchange of this.configurationData.exchanges) {
+            const pairs = data.Data[exchange.value].pairs;
+
+            for (const leftPairPart of Object.keys(pairs)) {
+                const symbols = pairs[leftPairPart].map(rightPairPart => {
+                    const symbol = generateSymbol(exchange.value, leftPairPart, rightPairPart);
+                    return {
+                        symbol: symbol.short,
+                        ticker: symbol.full,
+                        description: symbol.short,
+                        exchange: exchange.value,
+                        type: 'crypto',
+                    };
+                });
+                allSymbols = [...allSymbols, ...symbols];
             }
-
-            console.log('DSE data:', data.pairs); // Log the DSE data
-
-            for (const exchange of this.configurationData.exchanges) {
-                console.log(exchange, '============= exchange')
-                const pairs = data[exchange.value]?.pairs || {};
-                console.log(pairs, '============= pairs')
-
-
-                for (const leftPairPart of Object.keys(pairs)) {
-                    const symbols = pairs[leftPairPart].map(rightPairPart => {
-                        const symbol = generateSymbol(exchange.value, leftPairPart, rightPairPart);
-                        console.log(symbol)
-                        return {
-                            symbol: symbol.short,
-                            ticker: symbol.full,
-                            description: symbol.short,
-                            exchange: exchange.value,
-                            type: 'stock',
-                        };
-                    });
-                    allSymbols = [...allSymbols, ...symbols];
-                }
-            }
-
-            console.log('All Symbols:', allSymbols); // Log all the symbols
-            return allSymbols;
-        } catch (error) {
-            console.error('[getAllSymbols]: Error', error);
-            throw error;
         }
+        return allSymbols;
     },
 
     onReady: function (callback) {
