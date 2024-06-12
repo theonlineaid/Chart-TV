@@ -104,7 +104,9 @@ const Datafeed = {
 
         const symbolItem = symbols.find(({ ticker }) => ticker === symbolName);
 
+        console.log({ symbolItem })
         console.log(symbols.find(({ ticker }) => ticker))
+        console.log(symbols.find(({ ticker }) => ticker === symbolName))
 
         if (!symbolItem) {
             console.log('[resolveSymbol]: Cannot resolve symbol', symbolName);
