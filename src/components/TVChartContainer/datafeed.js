@@ -14,28 +14,28 @@ async function makeApiRequest(path) {
 
 const Datafeed = {
     configurationData: {
-        supported_resolutions: ['1h', '2h', '3h', '4h', '5h', '6h', '1D', '1W', '3W', '1M', '6M'],
+        supported_resolutions: ['1h', '2h', '3h', '4h', '5h', '6h','1D', '1W', '3W', '1M', '6M'],
         exchanges: [
-            { value: 'DSE', name: 'DSE', desc: 'Dhaka Stock Exchange' }
+            { value: 'Bitfinex', name: 'Bitfinex', desc: 'Bitfinex'},
+            { value: 'Kraken', name: 'Kraken', desc: 'Kraken bitcoin exchange'},
         ],
         symbols_types: [
-            { name: "All types", value: "" },
-            { name: "Stock", value: "stock" },
-            { name: "Index", value: "index" }
+            { name: 'crypto', value: 'crypto'}
         ]
     },
+
 
     async getAllSymbols() {
         const data = await makeApiRequest('all');
 
-        // console.log(data)
+        console.log(data)
 
         let allSymbols = [];
 
         for (const exchange of this.configurationData.exchanges) {
-            const pairs = data.Data[exchange.value].pairs;
+            const pairs = data.Data.Bitfinex.pairs;
 
-            // console.log(pairs)
+            console.log(pairs)
 
             for (const leftPairPart of Object.keys(pairs)) {
                 const symbols = pairs[leftPairPart].map(rightPairPart => {
@@ -45,7 +45,7 @@ const Datafeed = {
                         ticker: symbol.full,
                         description: symbol.short,
                         exchange: exchange.value,
-                        type: 'stock',
+                        type: 'crypto',
                     };
                 });
                 allSymbols = [...allSymbols, ...symbols];
@@ -84,6 +84,7 @@ const Datafeed = {
         const symbolItem = symbols.find(({ ticker }) => ticker === symbolName);
 
         console.log({ symbolItem })
+        console.log(symbols.find(({ ticker }) => ticker))
         console.log(symbols.find(({ ticker }) => ticker === symbolName))
 
         if (!symbolItem) {
@@ -165,11 +166,11 @@ function generateSymbol(exchange, fromSymbol, toSymbol) {
     };
 }
 
+// Returns all parts of the symbol
 function parseFullSymbol(fullSymbol) {
-    const match = fullSymbol.match(/^(\w+):(\w+)(\w+)$/);
-    return {
-        exchange: match[1],
-        fromSymbol: match[2],
-        toSymbol: match[3]
-    };
+    const match = fullSymbol.match(/^(\w+):(\w+)\/(\w+)$/);
+    if (!match) {
+        return null;
+    }
+    return { exchange: match[1], fromSymbol: match[2], toSymbol: match[3] };
 }
