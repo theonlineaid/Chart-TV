@@ -75,44 +75,41 @@ const Datafeed = {
 
     async resolveSymbol(symbolName, onSymbolResolvedCallback, onResolveErrorCallback, extension) {
         console.log('[resolveSymbol]: Method call', symbolName);
-        try {
-            const symbols = await this.getAllSymbols();
-            const symbolItem = symbols.find(({ ticker }) => ticker === symbolName);
+        const symbols = await this.getAllSymbols();
 
-            console.log({symbolItem})
 
-            if (!symbolItem) {
-                console.error('[resolveSymbol]: Cannot resolve symbol', symbolName);
-                onResolveErrorCallback('Cannot resolve symbol');
-                return;
-            }
+        console.log(symbols)
 
-            const symbolInfo = {
-                ticker: symbolItem.ticker,
-                name: symbolItem.symbol,
-                description: symbolItem.description,
-                type: "stock",
-                session: '24x7',
-                timezone: 'Asia/Dhaka',
-                exchange: symbolItem.exchange,
-                minmov: 1,
-                pricescale: 100,
-                has_intraday: false,
-                visible_plots_set: 'ohlc',
-                has_weekly_and_monthly: false,
-                supported_resolutions: this.configurationData.supported_resolutions,
-                volume_precision: 2,
-                data_status: 'streaming',
-            };
 
-            console.log(symbolInfo)
-            onSymbolResolvedCallback(symbolInfo);
-        } catch (error) {
-            console.error('[resolveSymbol]: Error', error);
+        const symbolItem = symbols.find(({ ticker }) => ticker === symbolName);
+
+        console.log({ symbolItem })
+
+        if (!symbolItem) {
+            console.log('[resolveSymbol]: Cannot resolve symbol', symbolName);
             onResolveErrorCallback('Cannot resolve symbol');
+            return;
         }
+        const symbolInfo = {
+            ticker: symbolItem.ticker,
+            name: symbolItem.symbol,
+            description: symbolItem.description,
+            type: symbolItem.type,
+            session: '24x7',
+            timezone: 'Etc/UTC',
+            exchange: symbolItem.exchange,
+            minmov: 1,
+            pricescale: 100,
+            has_intraday: false,
+            visible_plots_set: 'ohlc',
+            has_weekly_and_monthly: false,
+            supported_resolutions: this.configurationData.supported_resolutions,
+            volume_precision: 2,
+            data_status: 'streaming',
+        };
+        console.log('[resolveSymbol]: Symbol resolved', symbolName);
+        onSymbolResolvedCallback(symbolInfo);
     },
-
     async getBars(symbolInfo, resolution, periodParams, onHistoryCallback, onErrorCallback) {
         const { from, to } = periodParams;
         const parsedSymbol = parseFullSymbol(symbolInfo.ticker);
