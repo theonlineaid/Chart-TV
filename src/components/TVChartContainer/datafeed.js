@@ -1,6 +1,11 @@
 async function makeApiRequest(path) {
     try {
-        const response = await fetch(`http://localhost:3000/${path}`);
+        const response = await fetch(`http://localhost:8000/${path}`, {
+            headers: {
+                "Accept": 'application/json',
+                // 'User-agent': 'learning app',
+            }
+        });
         if (!response.ok) {
             throw new Error(`Request failed with status ${response.status}`);
         }
@@ -30,6 +35,8 @@ const Datafeed = {
             const data = await makeApiRequest('DSE');
             let allSymbols = [];
 
+            console.log(allSymbols)
+
             if (!data.pairs) {
                 console.error('DSE data is undefined');
                 throw new Error('DSE data is undefined');
@@ -39,7 +46,8 @@ const Datafeed = {
 
             for (const exchange of this.configurationData.exchanges) {
                 console.log(exchange, '============= exchange')
-                const pairs = data[exchange.value]?.pairs || {};
+                // const pairs = data[exchange.value]?.pairs || {};
+                const pairs = data?.pairs || {};
                 console.log(pairs, '============= pairs')
 
 
@@ -49,6 +57,7 @@ const Datafeed = {
                         console.log(symbol)
                         return {
                             symbol: symbol.short,
+                            // symbol: symbol.full,
                             ticker: symbol.full,
                             description: symbol.short,
                             exchange: exchange.value,
@@ -88,6 +97,9 @@ const Datafeed = {
         try {
             const symbols = await this.getAllSymbols();
             const symbolItem = symbols.find(({ ticker }) => ticker === symbolName);
+            // const symbolItem = symbols.find(({ ticker }) => ticker );
+
+            console.log({symbols, symbolItem},  "----------------- see result")
 
             if (!symbolItem) {
                 console.error('[resolveSymbol]: Cannot resolve symbol', symbolName);
@@ -100,7 +112,7 @@ const Datafeed = {
                 name: symbolItem.symbol,
                 description: symbolItem.description,
                 type: "stock",
-                session: '24x7',
+                session: '20x5',
                 timezone: 'Asia/Dhaka',
                 exchange: symbolItem.exchange,
                 minmov: 1,

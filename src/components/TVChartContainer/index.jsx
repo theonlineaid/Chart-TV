@@ -12,11 +12,11 @@ function getLanguageFromURL() {
 export const TVChartContainer = () => {
     const chartContainerRef = useRef();
     const defaultProps = {
-        symbol: "DSE:BDT", // Change the default symbol here
+        symbol: "DSE", // Change the default symbol here
         interval: 'D',
-        // datafeedUrl: 'https://demo_feed.tradingview.com',
+        datafeedUrl: 'https://demo_feed.tradingview.com',
         libraryPath: '/charting_library/',
-        // chartsStorageUrl: 'https://saveload.tradingview.com',
+        chartsStorageUrl: 'https://saveload.tradingview.com',
         chartsStorageApiVersion: '1.1',
         clientId: 'tradingview.com',
         userId: 'public_user_id',
