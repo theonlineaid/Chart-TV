@@ -27,6 +27,9 @@ const Datafeed = {
 
     async getAllSymbols() {
         const data = await makeApiRequest('all');
+
+        console.log(data)
+
         let allSymbols = [];
 
         for (const exchange of this.configurationData.exchanges) {
@@ -40,7 +43,7 @@ const Datafeed = {
                         ticker: symbol.full,
                         description: symbol.short,
                         exchange: exchange.value,
-                        type: 'crypto',
+                        type: 'stock',
                     };
                 });
                 allSymbols = [...allSymbols, ...symbols];
