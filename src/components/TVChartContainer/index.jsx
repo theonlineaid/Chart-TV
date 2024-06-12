@@ -12,7 +12,8 @@ function getLanguageFromURL() {
 export const TVChartContainer = () => {
     const chartContainerRef = useRef();
     const defaultProps = {
-        symbol: "Bitfinex:BTC/USD", // Change the default symbol here
+        // symbol: "Bitfinex:BTC/USD",
+        symbol: "DSE:ROBI/BDT", // Change the default symbol here
         interval: 'D',
         // datafeedUrl: 'https://demo_feed.tradingview.com',
         libraryPath: '/charting_library/',

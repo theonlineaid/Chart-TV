@@ -1,39 +1,55 @@
+// const API_KEY = 'a617f44edefa9b5794f43e6a1054755d13a69d11318c8d3ed4e5bf08cd61730d';
+
 async function makeApiRequest(path) {
     try {
         const response = await fetch(`http://localhost:8000/${path}`);
-        if (!response.ok) {
-            throw new Error(`Request failed with status ${response.status}`);
-        }
-        const data = await response.json();
-        // console.log('API Response:', data); // Log the entire API response
-        return data;
+        return response.json();
     } catch (error) {
-        throw new Error(`Request error: ${error.message}`);
+        throw new Error(`CryptoCompare request error: ${error.status}`);
     }
+}
+
+// Generates a symbol ID from a pair of the coins
+function generateSymbol(exchange, fromSymbol, toSymbol) {
+    const short = `${fromSymbol}/${toSymbol}`;
+    return {
+        short,
+        full: `${exchange}:${short}`,
+    };
+}
+
+// Returns all parts of the symbol
+function parseFullSymbol(fullSymbol) {
+    const match = fullSymbol.match(/^(\w+):(\w+)\/(\w+)$/);
+    if (!match) {
+        return null;
+    }
+    return { exchange: match[1], fromSymbol: match[2], toSymbol: match[3] };
 }
 
 const Datafeed = {
     configurationData: {
         supported_resolutions: ['1h', '2h', '3h', '4h', '5h', '6h','1D', '1W', '3W', '1M', '6M'],
         exchanges: [
-            { value: 'Bitfinex', name: 'Bitfinex', desc: 'Bitfinex'},
-            { value: 'Kraken', name: 'Kraken', desc: 'Kraken bitcoin exchange'},
+            { value: 'DSE', name: 'DSE', desc: 'DSE'},
+            // { value: 'Kraken', name: 'Kraken', desc: 'Kraken bitcoin exchange'},
         ],
         symbols_types: [
-            { name: 'crypto', value: 'crypto'}
+            { name: 'stock', value: 'stock'}
         ]
     },
 
-
     async getAllSymbols() {
+        // const data = await makeApiRequest('data/v3/all/exchanges');
         const data = await makeApiRequest('all');
+        let allSymbols = [];
 
         console.log(data)
 
-        let allSymbols = [];
-
+        
         for (const exchange of this.configurationData.exchanges) {
-            const pairs = data.Data.Bitfinex.pairs;
+            const pairs = data.Data.DSE.pairs;
+
 
             console.log(pairs)
 
@@ -45,7 +61,7 @@ const Datafeed = {
                         ticker: symbol.full,
                         description: symbol.short,
                         exchange: exchange.value,
-                        type: 'crypto',
+                        type: 'stock',
                     };
                 });
                 allSymbols = [...allSymbols, ...symbols];
@@ -57,9 +73,9 @@ const Datafeed = {
         return allSymbols;
     },
 
-    onReady: function (callback) {
+    onReady: function(callback) {
         console.log('[onReady]: Method call');
-        setTimeout(() => callback(this.configurationData), 0);
+        setTimeout(() => callback(this.configurationData));
     },
 
     async searchSymbols(userInput, exchange, symbolType, onResultReadyCallback) {
@@ -67,7 +83,9 @@ const Datafeed = {
         const symbols = await this.getAllSymbols();
         const newSymbols = symbols.filter(symbol => {
             const isExchangeValid = exchange === '' || symbol.exchange === exchange;
-            const isFullSymbolContainsInput = symbol.ticker.toLowerCase().includes(userInput.toLowerCase());
+            const isFullSymbolContainsInput = symbol.ticker
+                .toLowerCase()
+                .indexOf(userInput.toLowerCase()) !== -1;
             return isExchangeValid && isFullSymbolContainsInput;
         });
         onResultReadyCallback(newSymbols);
@@ -98,7 +116,7 @@ const Datafeed = {
             description: symbolItem.description,
             type: symbolItem.type,
             session: '24x7',
-            timezone: 'Etc/UTC',
+            timezone: 'Asia/UTC',
             exchange: symbolItem.exchange,
             minmov: 1,
             pricescale: 100,
@@ -112,65 +130,56 @@ const Datafeed = {
         console.log('[resolveSymbol]: Symbol resolved', symbolName);
         onSymbolResolvedCallback(symbolInfo);
     },
+
     async getBars(symbolInfo, resolution, periodParams, onHistoryCallback, onErrorCallback) {
-        const { from, to } = periodParams;
+        const { from, to, firstDataRequest } = periodParams;
         const parsedSymbol = parseFullSymbol(symbolInfo.ticker);
         const urlParameters = {
             e: parsedSymbol.exchange,
+            fsym: parsedSymbol.fromSymbol,
+            tsym: parsedSymbol.toSymbol,
+            toTs: to,
+            limit: 2000,
         };
         const query = Object.keys(urlParameters)
             .map(name => `${name}=${encodeURIComponent(urlParameters[name])}`)
-            .join('&');
+                .join('&');
         try {
+            // const data = await makeApiRequest(`data/histoday?${query}`);
             const data = await makeApiRequest(`histoday?${query}`);
 
-            if (data.Response && data.Response === 'Error' || !data.Data || data.Data.length === 0) {
+            console.log(data)
+
+            if (data.Response && data.Response === 'Error' || data.Data.length === 0) {
                 onHistoryCallback([], { noData: true });
                 return;
             }
-
-            const bars = data.Data.map(bar => ({
-                time: bar.time * 1000,
-                low: bar.low,
-                high: bar.high,
-                open: bar.open,
-                close: bar.close,
-            }));
-
-            const filteredBars = bars.filter(bar => bar.time >= from && bar.time < to);
-
-            onHistoryCallback(filteredBars, { noData: false });
+            let bars = [];
+            data.Data.forEach(bar => {
+                if (bar.time >= from && bar.time < to) {
+                    bars = [...bars, {
+                        time: bar.time * 1000,
+                        low: bar.low,
+                        high: bar.high,
+                        open: bar.open,
+                        close: bar.close,
+                    }];
+                }
+            });
+            onHistoryCallback(bars, { noData: false });
         } catch (error) {
             console.log('[getBars]: Get error', error);
             onErrorCallback(error);
         }
     },
 
-    subscribeBars: function (symbolInfo, resolution, onRealtimeCallback, subscriberUID, onResetCacheNeededCallback) {
+    subscribeBars: function(symbolInfo, resolution, onRealtimeCallback, subscriberUID, onResetCacheNeededCallback) {
         console.log('[subscribeBars]: Method call with subscriberUID:', subscriberUID);
     },
 
-    unsubscribeBars: function (subscriberUID) {
+    unsubscribeBars: function(subscriberUID) {
         console.log('[unsubscribeBars]: Method call with subscriberUID:', subscriberUID);
     },
 };
 
 export default Datafeed;
-
-function generateSymbol(exchange, fromSymbol, toSymbol) {
-    const short = `${exchange}:${fromSymbol}/${toSymbol}`;
-    const full = `${exchange}:${fromSymbol}${toSymbol}`;
-    return {
-        short: short,
-        full: full
-    };
-}
-
-// Returns all parts of the symbol
-function parseFullSymbol(fullSymbol) {
-    const match = fullSymbol.match(/^(\w+):(\w+)\/(\w+)$/);
-    if (!match) {
-        return null;
-    }
-    return { exchange: match[1], fromSymbol: match[2], toSymbol: match[3] };
-}
