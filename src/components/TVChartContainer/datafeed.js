@@ -5,7 +5,7 @@ async function makeApiRequest(path) {
             throw new Error(`Request failed with status ${response.status}`);
         }
         const data = await response.json();
-        console.log('API Response:', data); // Log the entire API response
+        // console.log('API Response:', data); // Log the entire API response
         return data;
     } catch (error) {
         throw new Error(`Request error: ${error.message}`);
@@ -84,6 +84,7 @@ const Datafeed = {
         const symbolItem = symbols.find(({ ticker }) => ticker === symbolName);
 
         console.log({ symbolItem })
+        console.log(symbols.find(({ ticker }) => ticker === symbolName))
 
         if (!symbolItem) {
             console.log('[resolveSymbol]: Cannot resolve symbol', symbolName);
