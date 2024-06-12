@@ -36,7 +36,7 @@ const Datafeed = {
         supported_resolutions: ['1h', '2h', '3h', '4h', '5h', '6h','1D', '1W', '3W', '1M', '6M'],
         exchanges: [
             { value: 'Bitfinex', name: 'Bitfinex', desc: 'Bitfinex'},
-            { value: 'Kraken', name: 'Kraken', desc: 'Kraken bitcoin exchange'},
+            // { value: 'Kraken', name: 'Kraken', desc: 'Kraken bitcoin exchange'},
         ],
         symbols_types: [
             { name: 'crypto', value: 'crypto'}
@@ -47,8 +47,14 @@ const Datafeed = {
         const data = await makeApiRequest('data/v3/all/exchanges');
         let allSymbols = [];
 
+        console.log(data)
+
+        
         for (const exchange of this.configurationData.exchanges) {
             const pairs = data.Data[exchange.value].pairs;
+
+
+            console.log(pairs)
 
             for (const leftPairPart of Object.keys(pairs)) {
                 const symbols = pairs[leftPairPart].map(rightPairPart => {
@@ -64,6 +70,9 @@ const Datafeed = {
                 allSymbols = [...allSymbols, ...symbols];
             }
         }
+
+        console.log(allSymbols)
+
         return allSymbols;
     },
 
@@ -88,7 +97,15 @@ const Datafeed = {
     async resolveSymbol(symbolName, onSymbolResolvedCallback, onResolveErrorCallback, extension) {
         console.log('[resolveSymbol]: Method call', symbolName);
         const symbols = await this.getAllSymbols();
+
+
+        console.log(symbols)
+
+
         const symbolItem = symbols.find(({ ticker }) => ticker === symbolName);
+
+        console.log(symbolItem)
+
         if (!symbolItem) {
             console.log('[resolveSymbol]: Cannot resolve symbol', symbolName);
             onResolveErrorCallback('Cannot resolve symbol');
@@ -130,6 +147,9 @@ const Datafeed = {
                 .join('&');
         try {
             const data = await makeApiRequest(`data/histoday?${query}`);
+
+            console.log(data)
+
             if (data.Response && data.Response === 'Error' || data.Data.length === 0) {
                 onHistoryCallback([], { noData: true });
                 return;
