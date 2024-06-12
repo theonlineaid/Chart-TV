@@ -17,6 +17,24 @@ async function makeApiRequest(path) {
     }
 }
 
+
+function generateSymbol(exchange, fromSymbol, toSymbol) {
+    const short = `${fromSymbol}/${toSymbol}`;
+    return {
+        short,
+        full: `${exchange}:${short}`,
+    };
+}
+
+// Returns all parts of the symbol
+function parseFullSymbol(fullSymbol) {
+    const match = fullSymbol.match(/^(\w+):(\w+)\/(\w+)$/);
+    if (!match) {
+        return null;
+    }
+    return { exchange: match[1], fromSymbol: match[2], toSymbol: match[3] };
+}
+
 const Datafeed = {
     configurationData: {
         supported_resolutions: ['1h', '2h', '3h', '4h', '5h', '6h', '1D', '1W', '3W', '1M', '6M'],
@@ -35,29 +53,26 @@ const Datafeed = {
             const data = await makeApiRequest('DSE');
             let allSymbols = [];
 
-            console.log(allSymbols)
+            console.log(data)
 
-            if (!data.pairs) {
-                console.error('DSE data is undefined');
-                throw new Error('DSE data is undefined');
-            }
+            // if (!data.pairs) {
+            //     console.error('DSE data is undefined');
+            //     throw new Error('DSE data is undefined');
+            // }
 
             console.log('DSE data:', data.pairs); // Log the DSE data
 
             for (const exchange of this.configurationData.exchanges) {
-                console.log(exchange, '============= exchange')
                 // const pairs = data[exchange.value]?.pairs || {};
                 const pairs = data?.pairs || {};
-                console.log(pairs, '============= pairs')
+                console.log(pairs)
 
 
                 for (const leftPairPart of Object.keys(pairs)) {
                     const symbols = pairs[leftPairPart].map(rightPairPart => {
                         const symbol = generateSymbol(exchange.value, leftPairPart, rightPairPart);
-                        console.log(symbol)
                         return {
                             symbol: symbol.short,
-                            // symbol: symbol.full,
                             ticker: symbol.full,
                             description: symbol.short,
                             exchange: exchange.value,
@@ -68,7 +83,8 @@ const Datafeed = {
                 }
             }
 
-            console.log('All Symbols:', allSymbols); // Log all the symbols
+            console.log(allSymbols)
+
             return allSymbols;
         } catch (error) {
             console.error('[getAllSymbols]: Error', error);
@@ -151,6 +167,8 @@ const Datafeed = {
         try {
             const data = await makeApiRequest(`histoday?${query}`);
 
+            console.log(data)
+
             if (data.Response && data.Response === 'Error' || !data.Data || data.Data.length === 0) {
                 onHistoryCallback([], { noData: true });
                 return;
@@ -184,22 +202,22 @@ const Datafeed = {
 
 export default Datafeed;
 
-function generateSymbol(exchange, fromSymbol, toSymbol) {
-    const short = `${exchange}:${fromSymbol}/${toSymbol}`;
-    const full = `${exchange}:${fromSymbol}${toSymbol}`;
+// function generateSymbol(exchange, fromSymbol, toSymbol) {
+//     const short = `${exchange}:${fromSymbol}/${toSymbol}`;
+//     const full = `${exchange}:${fromSymbol}${toSymbol}`;
 
-    console.log(short, full, "=================Short full")
-    return {
-        short: short,
-        full: full
-    };
-}
+//     console.log(short, full, "=================Short full")
+//     return {
+//         short: short,
+//         full: full
+//     };
+// }
 
-function parseFullSymbol(fullSymbol) {
-    const match = fullSymbol.match(/^(\w+):(\w+)(\w+)$/);
-    return {
-        exchange: match[1],
-        fromSymbol: match[2],
-        toSymbol: match[3]
-    };
-}
+// function parseFullSymbol(fullSymbol) {
+//     const match = fullSymbol.match(/^(\w+):(\w+)(\w+)$/);
+//     return {
+//         exchange: match[1],
+//         fromSymbol: match[2],
+//         toSymbol: match[3]
+//     };
+// }
