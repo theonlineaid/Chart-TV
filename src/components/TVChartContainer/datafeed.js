@@ -1,12 +1,13 @@
-const API_KEY = 'a617f44edefa9b5794f43e6a1054755d13a69d11318c8d3ed4e5bf08cd61730d';
+// const API_KEY = 'a617f44edefa9b5794f43e6a1054755d13a69d11318c8d3ed4e5bf08cd61730d';
 
 async function makeApiRequest(path) {
     try {
-        const response = await fetch(`https://min-api.cryptocompare.com/${path}`, {
-            headers: {
-                Authorization: `Apikey ${API_KEY}`
-            }
-        });
+        // const response = await fetch(`https://min-api.cryptocompare.com/${path}`, {
+        //     headers: {
+        //         Authorization: `Apikey ${API_KEY}`
+        //     }
+        // });
+        const response = await fetch(`http://localhost:8000/${path}`);
         return response.json();
     } catch (error) {
         throw new Error(`CryptoCompare request error: ${error.status}`);
@@ -44,14 +45,15 @@ const Datafeed = {
     },
 
     async getAllSymbols() {
-        const data = await makeApiRequest('data/v3/all/exchanges');
+        // const data = await makeApiRequest('data/v3/all/exchanges');
+        const data = await makeApiRequest('all');
         let allSymbols = [];
 
         console.log(data)
 
         
         for (const exchange of this.configurationData.exchanges) {
-            const pairs = data.Data[exchange.value].pairs;
+            const pairs = data.Data.Bitfinex.pairs;
 
 
             console.log(pairs)
@@ -148,7 +150,8 @@ const Datafeed = {
             .map(name => `${name}=${encodeURIComponent(urlParameters[name])}`)
                 .join('&');
         try {
-            const data = await makeApiRequest(`data/histoday?${query}`);
+            // const data = await makeApiRequest(`data/histoday?${query}`);
+            const data = await makeApiRequest(`histoday?${query}`);
 
             console.log(data)
 
